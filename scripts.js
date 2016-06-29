@@ -19,3 +19,5 @@ function factorialize(num) {
 }
 
 factorialize(5);
+
+/* Check for palindromes */
