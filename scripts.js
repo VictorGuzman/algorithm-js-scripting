@@ -21,3 +21,18 @@ function factorialize(num) {
 factorialize(5);
 
 /* Check for palindromes */
+function palindrome(str) {
+  var purified_str;
+  purified_str = str.replace(/[\W_]/g, "");
+  // Lower case remaining string
+  purified_str = purified_str.toLowerCase();
+  var purified_reverse_str = purified_str.split("").reverse().join("");
+  if (purified_str === purified_reverse_str){
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+palindrome("2_A3*3#A2");
