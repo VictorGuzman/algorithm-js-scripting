@@ -177,3 +177,20 @@ function removeRepeated(str) {
 }
 
 mutation(["hello", "Hello"]);
+
+/* Falsy Bouncer */
+
+function bouncer(arr) {
+  return arr.filter(isFalsy);
+}
+
+function isFalsy(val) {
+  if (val) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bouncer([7, "ate", "", false, 9]);
