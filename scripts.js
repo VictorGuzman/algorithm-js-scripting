@@ -149,3 +149,31 @@ function slasher(arr, howMany) {
 }
 
 slasher([1, 2, 3], 2);
+
+/* Mutations */
+
+function mutation(arr) {
+  var compareStr = removeRepeated(arr[1].toLowerCase());
+  var strArr = arr[0].toLowerCase().split("");
+  var foundArr = [];
+  strArr.map(function (val) {
+    if (compareStr.indexOf(val) >= 0){
+      if (foundArr.indexOf(val) == -1) {
+        foundArr.push(val);
+      }
+    }
+  });
+  return foundArr.length == compareStr.length;
+}
+
+function removeRepeated(str) {
+  var result = '';
+  for(var i = 0; i < str.length; i++) {
+    if(result.indexOf(str[i]) < 0) {
+      result += str[i];
+    }
+  }
+  return result;
+}
+
+mutation(["hello", "Hello"]);
