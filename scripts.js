@@ -194,3 +194,22 @@ function isFalsy(val) {
 }
 
 bouncer([7, "ate", "", false, 9]);
+
+/* Seek and Destroy */
+
+function destroyer(arr) {
+  argsArr = Array.from(arguments);
+  var mainArr = argsArr.splice(0, 1)[0];
+  return mainArr.filter(isInArr);
+}
+
+function isInArr(element) {
+  if (argsArr.indexOf(element) > -1) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
