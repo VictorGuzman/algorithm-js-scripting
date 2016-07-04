@@ -213,3 +213,27 @@ function isInArr(element) {
 }
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+/* Where do I belong */
+
+function getIndexToIns(arr, num) {
+  var sortedArr = arr.sort(function(a, b){
+    return a - b;
+  });
+  for (var i = 0; i < sortedArr.length; i++) {
+    // is lower than first one
+    if (i === 0 && num < sortedArr[i]) {
+      return 0;
+    }
+    // is lower than any
+    else if (num <= sortedArr[i]) {
+      return i;
+    }
+    // is higher than last
+    else if ((i === (sortedArr.length - 1)) && (num > sortedArr[i])) {
+      return i + 1;
+    }
+  }
+}
+
+getIndexToIns([2, 5, 10], 15);
