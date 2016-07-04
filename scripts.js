@@ -237,3 +237,29 @@ function getIndexToIns(arr, num) {
 }
 
 getIndexToIns([2, 5, 10], 15);
+
+/* Caesars Cipher */
+
+function rot13(str) { // LBH QVQ VG!
+  var strArr = str.split("");
+  var resultArr = [];
+  for (var i = 0; i < strArr.length; i++) {
+    //check if it's a letter only
+    var charCodeAt = strArr[i].charCodeAt();
+    if (charCodeAt >= 65 && charCodeAt <= 77) {
+      charCodeAt += 13;
+      resultArr.push(String.fromCharCode(charCodeAt));
+    }
+    else if (charCodeAt >= 78 && charCodeAt <= 90) {
+      charCodeAt -= 13;
+      resultArr.push(String.fromCharCode(charCodeAt));
+    }
+    else {
+      resultArr.push(strArr[i]);
+    }
+  }
+  return resultArr.join("");
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
