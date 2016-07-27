@@ -234,3 +234,16 @@ function hasProperties(compareObj, sourceObj) {
 }
 
 whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+/* Search and Replace */
+
+function myReplace(str, before, after) {
+  var upperRe = /^[A-Z]/;
+  if (upperRe.test(before)) {
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  }
+  var re =  new RegExp(before, "gi");
+  return str.replace(re, after);
+}
+
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
