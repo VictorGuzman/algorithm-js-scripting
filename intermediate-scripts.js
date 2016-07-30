@@ -247,3 +247,37 @@ function myReplace(str, before, after) {
 }
 
 myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+
+/* Pig Latin */
+
+function translatePigLatin(str) {
+  var consSuffix = "ay";
+  var vowelSuffix = "way";
+  // First letter is vowel
+  if (isVowel(str[0])) {
+    return str + vowelSuffix;
+  }
+  // First letter is consonant
+  else {
+    var consArr = [];
+    var strArr = str.split("");
+    for (var i = 0; i < strArr.length; i++) {
+      if (isVowel(strArr[i])) {
+        var consStr = consArr.join("");
+        var reminderStr = str.substr(i, (strArr.length -1));
+        return reminderStr + consStr + consSuffix;
+      }
+      else {
+        consArr.push(strArr[i]);
+      }
+    }
+  }
+}
+
+/* Checks if a letter is a vowel */
+function isVowel(letter) {
+  var vowelRe = /^[aeiou]$/i;
+  return vowelRe.test(letter);
+}
+
+translatePigLatin("glove");
