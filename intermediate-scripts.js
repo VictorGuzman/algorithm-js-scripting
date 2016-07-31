@@ -281,3 +281,21 @@ function isVowel(letter) {
 }
 
 translatePigLatin("glove");
+
+/* DNA Pairing */
+
+
+function pairElement(str) {
+  var pairingObj = {
+    "G": "C",
+    "C": "G",
+    "A": "T",
+    "T": "A"
+  };
+  var strArr = str.split("");
+  return strArr.map(function(element) {
+    return [element, pairingObj[element]];
+  });
+}
+
+pairElement("GCG");
