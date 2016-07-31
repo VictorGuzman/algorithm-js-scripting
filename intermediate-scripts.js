@@ -284,7 +284,6 @@ translatePigLatin("glove");
 
 /* DNA Pairing */
 
-
 function pairElement(str) {
   var pairingObj = {
     "G": "C",
@@ -299,3 +298,23 @@ function pairElement(str) {
 }
 
 pairElement("GCG");
+
+/* Missing letters */
+
+function fearNotLetter(str) {
+  var strArr = str.split("");
+  // Initial value is the first letter
+  var resultLetter;
+  for (var i = 0; i < strArr.length ; i++) {
+    if (i !== 0) {
+      var prevCharCode = strArr[i - 1].charCodeAt();
+      var currentCharCode = strArr[i].charCodeAt();
+      if ((currentCharCode - prevCharCode) != 1) {
+        resultLetter = String.fromCharCode((prevCharCode + 1));
+      }
+    }
+  }
+  return resultLetter;
+}
+
+fearNotLetter("abce");
