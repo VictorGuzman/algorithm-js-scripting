@@ -318,3 +318,16 @@ function fearNotLetter(str) {
 }
 
 fearNotLetter("abce");
+
+/* Boo who */
+
+function booWho(bool) {
+  if (typeof(bool) == "boolean") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+booWho(null);
