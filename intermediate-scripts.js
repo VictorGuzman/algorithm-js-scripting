@@ -331,3 +331,24 @@ function booWho(bool) {
 }
 
 booWho(null);
+
+/* Sorted Union */
+
+function uniteUnique(arr) {
+  var args = Array.prototype.slice.call(arguments);
+  return args.reduce(function(prevArr, currentArr) {
+    return prevArr.concat(removeRepeated(prevArr, currentArr));
+  });
+}
+
+function removeRepeated(srcArr, compareArr) {
+  var resultArr = [];
+  for (var i = 0; i < compareArr.length; i++) {
+    if (srcArr.indexOf(compareArr[i]) < 0) {
+      resultArr.push(compareArr[i]);
+    }
+  }
+  return resultArr;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
