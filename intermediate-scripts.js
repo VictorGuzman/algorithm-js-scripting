@@ -352,3 +352,21 @@ function removeRepeated(srcArr, compareArr) {
 }
 
 uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+/* Convert HTML Entities */
+
+function convertHTML(str) {
+  var entitiesObj = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&apos;'
+  };
+  var entitiesRe = new RegExp(/[&<>"']/g);
+  return str.replace(entitiesRe, function(match) {
+    return entitiesObj[match];
+  });
+}
+
+convertHTML("Hamburgers < Pizza < Tacos");
