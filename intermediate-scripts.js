@@ -370,3 +370,16 @@ function convertHTML(str) {
 }
 
 convertHTML("Hamburgers < Pizza < Tacos");
+
+/* Spinal Tap Case */
+
+function spinalCase(str) {
+  var capitalsRe = /(?!^)([A-Z])/g;
+  var spinalRe = /[\s_]+(?=[a-zA-Z])/g;
+  str = str.replace(capitalsRe, function(match) {
+    return ' ' + match;
+  });
+  return str.replace(spinalRe, '-').toLowerCase();
+}
+
+spinalCase('This Is Spinal Tap');
