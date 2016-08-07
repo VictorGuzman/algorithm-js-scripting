@@ -383,3 +383,36 @@ function spinalCase(str) {
 }
 
 spinalCase('This Is Spinal Tap');
+
+/* Sum All Odd Fibonacci Numbers */
+
+function sumFibs(num) {
+  var sumArr = [];
+  var currentFib;
+  for (var i = 1; i >= 0; i++){
+    currentFib = fibonacci(i);
+    if (currentFib > num) {
+      break;
+    }
+    else{
+      if ((currentFib % 2) !== 0) {
+        sumArr.push(currentFib);
+      }
+    }
+  }
+  console.log(sumArr);
+  return sumArr.reduce(function(a, b) {
+    return a + b;
+  });
+}
+
+function fibonacci(num) {
+  if (num <= 2) {
+    return 1;
+  }
+  else {
+    return fibonacci(num - 1) + fibonacci(num - 2);
+  }
+}
+
+sumFibs(75025);
