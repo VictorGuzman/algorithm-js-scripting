@@ -454,3 +454,29 @@ function isPrime(num) {
 }
 
 sumPrimes(10);
+
+/* Smallest Common Multiple */
+
+function smallestCommons(arr) {
+  arr = arr.sort();
+  var sortedRange = [];
+  for (var i = arr[0]; i <= arr[arr.length - 1]; i++) {
+    sortedRange.push(i);
+  }
+  var lcm = 0;
+  var whileFlag = true;
+  while (whileFlag) {
+    lcm++;
+    for (var j = sortedRange[0]; j <= sortedRange[sortedRange.length -1]; j++) {
+      if ((lcm % j) !== 0) {
+        break;
+      }
+      else if (j == sortedRange[sortedRange.length -1]) {
+        whileFlag = false;
+      }
+    }
+  }
+  return lcm;
+}
+
+smallestCommons([23,18]);
