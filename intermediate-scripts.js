@@ -480,3 +480,12 @@ function smallestCommons(arr) {
 }
 
 smallestCommons([23,18]);
+
+/* Finders Keepers */
+
+function findElement(arr, func) {
+  var filteredArr = arr.filter(func);
+  return filteredArr[0];
+}
+
+findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
