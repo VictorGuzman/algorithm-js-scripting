@@ -489,3 +489,19 @@ function findElement(arr, func) {
 }
 
 findElement([1, 2, 3, 4], function(num){ return num % 2 === 0; });
+
+/* Drop it */
+
+function dropElements(arr, func) {
+  var copyArr = arr;
+  var resArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (func(arr[i])){
+      resArr = copyArr.slice(i, arr.length);
+      break;
+    }
+  }
+  return resArr;
+}
+
+dropElements([1, 2, 3, 4], function(n) {return n >= 3;});
