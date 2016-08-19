@@ -534,3 +534,26 @@ function binaryAgent(str) {
 }
 
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+/* Everything Be True */
+
+function truthCheck(collection, pre) {
+  var tempArr = [];
+  for (var i = 0; i < collection.length; i++) {
+    tempArr.push(isTruthy(collection[i][pre]));
+  }
+  return tempArr.reduce(function(a, b){
+    return a && b;
+  });
+}
+
+function isTruthy(val) {
+  if (val) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+truthCheck([{"single": "double"}, {"single": NaN}], "single");
