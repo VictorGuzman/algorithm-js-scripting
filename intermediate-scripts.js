@@ -557,3 +557,39 @@ function isTruthy(val) {
 }
 
 truthCheck([{"single": "double"}, {"single": NaN}], "single");
+
+/* Arguments Optional */
+
+function addTogether() {
+  var args = Array.prototype.slice.call(arguments);
+  if ((args.length > 1) && areNum(args)) {
+    return args[0] + args[1];
+  }
+  else if ((args.length == 1) && isNum(args[0])) {
+    var sumArgAnd = function(n) {
+      if (isNum(n)) {
+        return args[0] + n;
+      }
+      else {
+        return undefined;
+      }
+    };
+    return sumArgAnd;
+  }
+}
+
+function areNum(arr) {
+  return isNum(arr[0]) && isNum(arr[1]);
+}
+
+function isNum(val) {
+  if (typeof(val) == 'number') {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
+addTogether(2)(3);
