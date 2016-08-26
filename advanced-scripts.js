@@ -101,3 +101,68 @@ function checkCashRegister(price, cash, cid) {
 }
 
 checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+
+/* Inventory Update */
+
+function updateInventory(arr1, arr2) {
+  var resArr = [];
+  arr2.forEach(function(articleArr) {
+    var articleName = articleArr[1];
+    var articleQuant = articleArr[0];
+    if (isInInventory(arr1, articleName)) {
+      arr1 = updateInvArticle(arr1, articleName, articleQuant);
+    }
+    else {
+      arr1.push(articleArr);
+    }
+  });
+  return sort2DArray(arr1);
+}
+
+// Checks if an article is present in an inventory array
+function isInInventory(invArr, articleName) {
+  var res = false;
+  invArr.forEach(function(articleArr) {
+    if (articleArr.indexOf(articleName) > 0) {
+      res = true;
+    }
+  });
+  return res;
+}
+
+// Updtaes an existing article in current inventory
+function updateInvArticle(invArr, articleName, quant) {
+  invArr.forEach(function(articleArr) {
+    if (articleArr.indexOf(articleName) > 0) {
+      articleArr[0] += quant;
+    }
+  });
+  return invArr;
+}
+
+// Sorts a 2D array
+function sort2DArray(arr) {
+  return arr.sort(function(a, b) {
+    if (a[1] < b[1]) return -1;
+    if (a[1] > b[1]) return 1;
+    return 0;
+  });
+}
+
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
