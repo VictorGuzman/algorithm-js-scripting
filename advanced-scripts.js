@@ -199,3 +199,101 @@ function permAlone(str) {
 }
 
 permAlone('aabb');
+
+/* Friendly Date Ranges */
+
+// Months object
+var months = {
+  1: 'January',
+  2: 'February',
+  3: 'March',
+  4: 'April',
+  5: 'May',
+  6: 'June',
+  7: 'July',
+  8: 'August',
+  9: 'September',
+  10: 'October',
+  11: 'November',
+  12: 'December'
+};
+
+// Gets the ordinal notation for a given number
+function getOrdinal(num) {
+  switch(num) {
+    case 1:
+    case 21:
+    case 31:
+      return num.toString() + 'st';
+    case 2:
+    case 22:
+      return num.toString() + 'nd';
+    case 3:
+    case 23:
+      return num.toString() + 'rd';
+    default:
+      return num.toString() + 'th';
+  }
+}
+
+// Gets year from splitted date in arr
+function getYear(splitDate) {
+  return parseInt(splitDate[0]);
+}
+
+// Gets month from splitted date in arr
+function getMonth(splitDate) {
+  return parseInt(splitDate[1]);
+}
+
+// Gets day from splitted date in arr
+function getDay(splitDate) {
+  return parseInt(splitDate[2]);
+}
+
+// Builds a friendly month and day string
+// based on a splitted date arr
+function buildMonthAndDay(splitDate) {
+  var day = getOrdinal(getDay(splitDate));
+  var month = months[getMonth(splitDate)];
+  return month + ' ' + day;
+}
+
+function buildFullDate(splitDate) {
+  return buildMonthAndDay(splitDate) + ', ' + getYear(splitDate);
+}
+
+function makeFriendlyDates(arr) {
+  var startArr = arr[0].split('-');
+  var endArr = arr[1].split('-');
+  var currentYear = new Date().getFullYear();
+
+    if ((getYear(endArr) === getYear(startArr)) && (getMonth(endArr) === getMonth(startArr)) && (getDay(endArr) === getDay(startArr))) {
+    return [buildFullDate(startArr)];
+  }
+
+  if ((getYear(endArr) === getYear(startArr)) && (getMonth(startArr) == getMonth(endArr))){
+    return [buildMonthAndDay(startArr), getOrdinal(getDay(endArr))];
+  }
+
+  if (getYear(endArr) === getYear(startArr)) {
+    return [buildFullDate(startArr), buildMonthAndDay(endArr)];
+  }
+
+  if ((getYear(startArr) === currentYear) && (getYear(endArr) - getYear(startArr) === 1)){
+    return [buildMonthAndDay(startArr), buildMonthAndDay(endArr)];
+  }
+
+
+  if (getYear(endArr) - getYear(startArr) >= 1) {
+    if ((getMonth(startArr) == getMonth(endArr)) && (getDay(startArr) - getDay(endArr) === 1)) {
+      return [buildFullDate(startArr), buildMonthAndDay(endArr)];
+    }
+    else {
+      return [buildFullDate(startArr), buildFullDate(endArr)];
+    }
+  }
+
+}
+
+makeFriendlyDates(["2022-09-05", "2023-09-04"]);
