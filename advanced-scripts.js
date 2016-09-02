@@ -334,3 +334,19 @@ var Person = function(firstAndLast) {
 
 var bob = new Person('Bob Ross');
 bob.getFullName();
+
+/* Map the Debris */
+
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  return arr.map(function (obj) {
+    var orbitalPeriod = (2 * Math.PI) * (Math.sqrt(Math.pow(earthRadius + obj.avgAlt, 3) / GM));
+    return {
+      name: obj.name,
+      orbitalPeriod: Math.round(orbitalPeriod)
+    };
+  });
+}
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
